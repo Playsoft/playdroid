@@ -1,4 +1,7 @@
-playdroid
+Playdroid
 =========
 
-PlayDroid
+
+Project Page
+-----------
+http://playsoft.github.io/playdroid/
