@@ -21,11 +21,6 @@ public interface IUltraActivity
 	void setupView();
 	
 	/**
-	 * Should return activity Id defined in IConstants
-	 */
-	int getActivityId();
-	
-	/**
 	 * Should contain initialization of layout components
 	 */
 	void initializeLayoutObjects();
