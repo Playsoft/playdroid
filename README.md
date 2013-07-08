@@ -1,6 +1,6 @@
 Playdroid
 =========
-Welcome to the Playdroid GitHub home.
+Welcome to the Playdroid GitHub homepage.
 
 
 Project Page
