@@ -26,8 +26,8 @@ public class CrashLogger
 	/** Real URL used during connecting with crash server **/
 	private static String sRealConnectionURL;
 	
-	/** Flag to check if we are initialized **/
-	private static boolean sIsInitialized;
+	/** Singleton instance **/
+	private static CrashLogger sInstance;
 	
 	/**
 	 * Initializes CrashLogger. There is nothing else to do here.
@@ -37,12 +37,29 @@ public class CrashLogger
 	 */
 	public static void init( int pAppId )
 	{
-		if ( sIsInitialized )
+		if ( sInstance == null )
 		{
-			return;
+			synchronized( CrashLogger.class )
+			{
+				if ( sInstance == null )
+				{
+					sInstance = new CrashLogger( pAppId );
+				}
+			}
 		}
-		
-		sIsInitialized = true;
+	}
+	
+	private CrashLogger( int pAppId )
+	{
+		sInstance.setup( pAppId );
+	}
+	
+	/**
+	 * Initializes Thread
+	 * @param pAppId
+	 */
+	private void setup( int pAppId )
+	{
 		sRealConnectionURL = CRASH_SERVER_URL + pAppId;
 		Thread.setDefaultUncaughtExceptionHandler( new UncaughtExceptionHandler()
 		{
